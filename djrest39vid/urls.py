@@ -16,8 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.schemas import get_schema_view
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view as swagger_get_schema_view
+
+
+schema_view = swagger_get_schema_view(openapi.Info(title="Skillwill API schema", default_version="1.0.0", description="API Schema for our API"), public=True)
+
+
 
 urlpatterns = [
+    path("swagger/", schema_view.with_ui("swagger"), name="swagger"),
     path('admin/', admin.site.urls),
     path("api/", include("note.urls"))
 

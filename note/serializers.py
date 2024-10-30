@@ -7,7 +7,8 @@ from note.models import Note
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserSerializerfields = [
+        model = User
+        fields = [
             "id",
             "username",
             "email"

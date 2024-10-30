@@ -13,6 +13,7 @@ from note.serializers import NoteSerializer
 
 class RegisterView(generics.GenericAPIView):
     serializer_class = UserSerializer
+    
 
 
 
@@ -25,7 +26,7 @@ class LoginView(APIView):
 
         if user:
             login(request, user)
-            return Response(UserSerializer(user.data))
+            return Response(UserSerializer(user).data)
 
         return Response({"error":"wrong Creditentials"}, status = status.HTTP_400_BAD_REQUEST)
 
